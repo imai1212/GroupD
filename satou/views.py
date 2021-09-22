@@ -88,7 +88,7 @@ class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 
-class DiaryDeleteView(LoginRequiredMixin, generic.DeleteView):
+class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Diary
     template_name = 'diary_delete.html'
     form_class = DiaryCreateForm
