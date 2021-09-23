@@ -5,7 +5,7 @@ from django.views import generic
 from django.contrib import messages
 from .forms import InquiryForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Kikuchi
+from .models import Blog
 from .forms import InquiryForm, BlogCreateForm
 
 logger = logging.getLogger(__name__)
@@ -28,20 +28,20 @@ class InquiryView(generic.FormView):
 
 
 class BlogListView(LoginRequiredMixin, generic.ListView):
-    model = Kikuchi
+    model = Blog
     template_name = 'blog_list.html'
     paginate_by = 2
 
     def get_queryset(self):
-        blogs = Kikuchi.objects.filter(user=self.request.user).order_by('-created_at')
+        blogs = Blog.objects.filter(user=self.request.user).order_by('-created_at')
         return blogs
 
 class BlogDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Kikuchi
+    model = Blog
     template_name = 'blog_detail.html'
 
 class BlogCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Kikuchi
+    model = Blog
     template_name = 'blog_create.html'
     form_class = BlogCreateForm
     success_url = reverse_lazy('kikuchi:blog_list')
@@ -58,7 +58,7 @@ class BlogCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_invalid(form)
 
 class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Kikuchi
+    model = Blog
     template_name = 'blog_update.html'
     form_class = BlogCreateForm
 
@@ -74,7 +74,7 @@ class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Kikuchi
+    model = Blog
     template_name = 'blog_delete.html'
     success_url = reverse_lazy('kikuchi:blog_list')
 
