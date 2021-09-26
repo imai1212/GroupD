@@ -34,9 +34,14 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link" href="{% url 'ezura:inquiry' %}">Inquiry</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item {% block active_blog_list %}{% endblock %}">
+                                <a href="{% url 'ezura:blog_list' %}" class="nav-link">BLOG LIST</a>
+                            </li>
+                        {% endif %}
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Blogs</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'ezura:all_blog_list' %}">Blogs</a></li>
                         {% if user.is_authenticated %}
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'account_logout' %}">Log Out</a></li>
                         {% else %}
