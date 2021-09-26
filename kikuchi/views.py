@@ -50,11 +50,11 @@ class BlogCreateView(LoginRequiredMixin, generic.CreateView):
         diary = form.save(commit=False)
         diary.user = self.request.user
         diary.save()
-        messages.success(self.request, '日記を作成しました。')
+        messages.success(self.request, 'ブログを作成しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, "日記の作成に失敗しました。")
+        messages.error(self.request, "ブログの作成に失敗しました。")
         return super().form_invalid(form)
 
 class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -66,11 +66,11 @@ class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
         return reverse_lazy('kikuchi:blog_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
-        messages.success(self.request, '日記を更新しました。')
+        messages.success(self.request, 'ブログを更新しました。')
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, "日記の更新に失敗しました。")
+        messages.error(self.request, "ブログの更新に失敗しました。")
         return super().form_invalid(form)
 
 class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
@@ -79,5 +79,5 @@ class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('kikuchi:blog_list')
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, "日記を削除しました。")
+        messages.success(self.request, "ブログを削除しました。")
         return super().delete(request, *args, **kwargs)

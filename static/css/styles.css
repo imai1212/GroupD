@@ -3932,6 +3932,7 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  color: #000;
 }
 
 .nav-link {
@@ -3966,7 +3967,7 @@ textarea.form-control-lg {
   border-top-right-radius: 0.5rem;
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  border-color: #eee9ef #e9ecef #dee2e6;
   isolation: isolate;
 }
 .nav-tabs .nav-link.disabled {

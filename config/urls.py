@@ -31,6 +31,3 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 ]
 
-# 開発サーバーでメディア配信できるようにする設定
-urlpatterns += static(settings.MEDIA_URL)
-document_root=settings.MEDIA_ROOT

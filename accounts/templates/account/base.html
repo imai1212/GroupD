@@ -28,25 +28,23 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container px-5">
-            <!-- アプリケーションurl末追加 -->
-            <a class="navbar-brand" href="{% url 'kikuchi:index' %}">PRIVATE BLOG</a>
+            <a class="nav-link" class="navbar-brand" style="font-size: 200%;" href="{% url 'kikuchi:index' %}">PRIVATE BLOG</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item {% block active_inquiry %}{% endblock %}">
-                        <!-- アプリケーションurl末追加 -->
-                        <a class="nav-link" href="{% url 'kikuchi:inquiry' %}">INQUIRY</a>
+                        <a class="nav-item" class="nav-link" href="{% url 'kikuchi:inquiry' %}">INQUIRY</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                        <a class="nav-item" class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
                     </li>
                     {% else %}
                     <li class="nav-item {% block account_signup %}{% endblock %}">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                        <a class="nav-item" class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
                     </li>
                     <li class="nav-item {% block account_login %}{% endblock %}">
-                        <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+                        <a class="nav-item" class="nav-link" href="{% url 'account_login' %}">Log In</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -58,7 +56,7 @@
 
     {% if messages %}
     <div class="container">
-        <div class="my-div-style w-100">
+        <div style="margin-top: 6rem;" class="my-div-style w-100">
             <ul class="messages" style="list-style: none;">
                 {% for msg in messages %}
                 <li {% if msg.tags%} class="{{message.tags}}" {% endif %}>
