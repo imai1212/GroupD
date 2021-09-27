@@ -201,26 +201,6 @@ LOGGING = {
             'handlers':['console'],
             'level':'DEBUG',
         },
-        #hinataアプリケーションが利用するロガー
-        'hinata':{
-            'handlers':['console'],
-            'level':'DEBUG',
-        },
-        #ezuraアプリケーションが利用するロガー
-        'ezura':{
-            'handlers':['console'],
-            'level':'DEBUG',
-        },
-        #kazumaアプリケーションが利用するロガー
-        'kazuma':{
-            'handlers':['console'],
-            'level':'DEBUG',
-        },
-        #satouアプリケーションが利用するロガー
-        'satou':{
-            'handlers':['console'],
-            'level':'DEBUG',
-        },
     },
     #ハンドラの設定
     'handlers':{
