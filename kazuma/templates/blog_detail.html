@@ -9,7 +9,7 @@
 
 {% block contents %}
 <div class="container">
-    <div class="my-div-style w-100">
+    <div style="margin-top: 6rem;" class="my-div-style w-100">
         <div class="row">
             <div class="col-3">
                 <strong>タイトル</strong>
@@ -39,16 +39,6 @@
             <div class="col-3">
                 {% if object.photo1 %}
                 <img src="{{ object.photo1.url }}" width="200" height="200" />
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.photo2 %}
-                <img src="{{ object.photo2.url }}" width="200" height="200" />
-                {% endif %}
-            </div>
-            <div class="col-3">
-                {% if object.photo3 %}
-                <img src="{{ object.photo3.url }}" width="200" height="200" />
                 {% endif %}
             </div>
         </div>

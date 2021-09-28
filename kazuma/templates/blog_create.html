@@ -1,8 +1,9 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
 {% block title %}
-ブログ作成|Private blog
+日記作成|Private blog
 {% endblock %}
 
 {% block active_blog_list %}active{% endblock %}
@@ -10,7 +11,7 @@
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style w-100">
+        <div style="margin-top: 6rem;" class="my-div-style w-100">
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <table class="table">

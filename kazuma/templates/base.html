@@ -24,28 +24,28 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
             <div class="container px-5">
-                <a class="navbar-brand" href="{% url 'kazuma:index' %}">PRIVATE BLOG</a>
+                <a class="nav-link" class="navbar-brand" style="font-size: 200%;" href="{% url 'kazuma:index' %}">PRIVATE BLOG</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item {% block active_inquiry %}{% endblock %}">
-                            <a class="nav-link" href="{% url 'kazuma:inquiry' %}">INQUIRY</a>
+                        <li class="nav-link {% block active_inquiry %}{% endblock %}">
+                            <a class="nav-item" href="{% url 'kazuma:inquiry' %}">INQUIRY</a>
                         </li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item {% block active_blog_list %}{% endblock %}">
-                        <a class="nav-link" href="{% url 'kazuma:blog_list' %}">BLOG_LIST</a>
+                        <li class="nav-link {% block active_blog_list %}{% endblock %}">
+                            <a class="nav-item" href="{% url 'kazuma:blog_list' %}">BLOG_LIST</a>
                         </li>
                         {% endif %}
                         {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                        <li class="nav-link">
+                            <a class="nav-item" href="{% url 'account_logout' %}">Log Out</a>
                         </li>
                         {% else %}
-                        <li class="nav-item {% block account_signup %}{% endblock %}">
-                            <a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a>
+                        <li class="nav-link {% block account_signup %}{% endblock %}">
+                            <a class="nav-item" href="{% url 'account_signup' %}">Sign Up</a>
                         </li>
-                        <li class="nav-item {% block account_login %}{% endblock %}">
-                            <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+                        <li class="nav-link {% block account_login %}{% endblock %}">
+                            <a class="nav-item" href="{% url 'account_login' %}">Log In</a>
                         </li>
                         {% endif %}
                     </ul>

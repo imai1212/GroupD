@@ -1,7 +1,7 @@
 from django import forms
 from django.core.mail import EmailMessage
 from django.forms import fields
-from .models import kazuma
+from .models import Blog
 
 class InquiryForm(forms.Form):
     name = forms.CharField(label='お名前', max_length=30)
@@ -45,8 +45,8 @@ class InquiryForm(forms.Form):
 
 class BlogCreateForm(forms.ModelForm):
     class Meta:
-        model = kazuma
-        fields = ('title', 'content', 'photo1', 'photo2', 'photo3')
+        model = Blog
+        fields = ('title', 'content', 'photo1')
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)

@@ -12,14 +12,14 @@
 {% block contents %}
 <div class="container">
     <div class="row">
-        <div class="my-div-style w-100">
+        <div style="margin-top: 6rem;" class="my-div-style w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="{% url 'kazuma:blog_create' %}">新規作成</a>
+                    <a class="btn btn-primary float-right" style="margin-top: 80pt;" href="{% url 'kazuma:blog_create' %}">新規作成</a>
                 </div>
                 {% for kazuma in blog_list %}
                 <div class="post-preview">
-                    <a href="{% url 'kazuma:blog_detail' blog.pk %}">
+                    <a href="{% url 'kazuma:blog_detail' kazuma.pk %}">
                         <h2 class="post-title">
                             {{ kazuma.title }}
                         </h2>
@@ -50,7 +50,7 @@
                     {% for page_num in page_obj.paginator.page_range %}
                     {% if page_obj.number == page_num %}
                     <li class="page-item active">
-                        <a class="page-link" href="#">{{ page_num }}</a>
+                        <a class="page-link" href="#">{{ page_num}}</a>
                     </li>
                     {% else %}
                     <li class="page-item">
