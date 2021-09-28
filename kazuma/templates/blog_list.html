@@ -21,10 +21,10 @@
                 <div class="post-preview">
                     <a href="{% url 'kazuma:blog_detail' blog.pk %}">
                         <h2 class="post-title">
-                            {{ blog.title }}
+                            {{ kazuma.title }}
                         </h2>
                         <h3 class="post-subtitle">
-                            {{ blog.content|truncatechars:20 }}
+                            {{ kazuma.content|truncatechars:20 }}
                         </h3>
                     </a>
                     <p class="post-meta">{{ blog.created_at }}</p>
