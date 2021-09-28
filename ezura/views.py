@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 import logging
+from django.http import request
 
 from django.urls import reverse_lazy
 
@@ -87,5 +88,5 @@ class AllBlogListView(generic.ListView):
     paginate_by = 2
 
     def get_queryset(self):
-        blogs = Blog.objects.order_by('create_at')
+        blogs = Blog.objects.order_by('-created_at')
         return blogs
