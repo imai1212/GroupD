@@ -1,6 +1,6 @@
-from .forms import InquiryForm, DiaryCreateForm
+from .forms import InquiryForm, BlogCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from diary.models import Diary
+from blog.models import Blog
 from django.contrib import messages
 from django.urls import reverse_lazy
 import logging
@@ -35,7 +35,7 @@ class InquiryView(generic.FormView):
         return super().form_valid(form)
 
 
-from.models import Diary
+from.models import Blog
 
 
 class BlogListView(LoginRequiredMixin, generic.ListView):
@@ -89,10 +89,10 @@ class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 
 class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Diary
-    template_name = 'diary_delete.html'
-    form_class = DiaryCreateForm
-    success_url = reverse_lazy('diary:diary_list')
+    model = Blog
+    template_name = 'blog_delete.html'
+    form_class = BlogCreateForm
+    success_url = reverse_lazy('satou:blog_list')
 
     def delete(self,request,*args,**kwargs):
         messages.success(self.request, '日記を削除しました。')
