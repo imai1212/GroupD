@@ -7,7 +7,7 @@
 {% block contents %}
 <div class="container">
   <div class="row">
-    <div class="my-div-style">
+    <div style="margin-top: 6rem;" class="my-div-style">
       <h1>サインアップ</h1>
       <form method="post" action="{% url 'account_signup' %}">
         {% csrf_token %}
