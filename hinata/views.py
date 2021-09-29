@@ -20,10 +20,10 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 class IndexView(generic.TemplateView):
-    template_name="hinata/index.html"
+    template_name="index.html"
     
 class InquiryView(generic.FormView):
-    template_name="hinata/Inquiry.html"
+    template_name="Inquiry.html"
     form_class = InquiryForm
     success_url = reverse_lazy('hinata:inquiry')
 
@@ -35,7 +35,7 @@ class InquiryView(generic.FormView):
 
 class BlogListView(LoginRequiredMixin, generic.ListView):
     model = Blog
-    template_name = 'hinata/blog_list.html'
+    template_name = 'blog_list.html'
     #paginate_by = 2
 
     def get_queryset(self):
@@ -44,11 +44,11 @@ class BlogListView(LoginRequiredMixin, generic.ListView):
 
 class BlogDetailView(LoginRequiredMixin, generic.DetailView):
     model = Blog
-    template_name = 'hinata/blog_detail.html'
+    template_name = 'blog_detail.html'
 
 class BlogCreateView(LoginRequiredMixin, generic.CreateView):
     model = Blog
-    template_name = 'hinata/blog_create.html'
+    template_name = 'blog_create.html'
     form_class = BlogCreateForm
     success_url = reverse_lazy('hinata:blog_list')
 
@@ -65,7 +65,7 @@ class BlogCreateView(LoginRequiredMixin, generic.CreateView):
 
 class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Blog
-    template_name = 'hinata/blog_update.html'
+    template_name = 'blog_update.html'
     form_class = BlogCreateForm
     
     def get_success_url(self):
@@ -81,7 +81,7 @@ class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Blog
-    template_name = 'hinata/blog_delete.html'
+    template_name = 'blog_delete.html'
     success_url = reverse_lazy('hinata:blog_list')
 
     def delete(self, request, *args, **kwargs):
