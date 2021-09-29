@@ -19,12 +19,12 @@
                 </div>
                 {% for satou in blog_list %}
                 <div class="post-preview">
-                    <a href="{% url 'satou:blog_detail' blog.pk %}">
+                    <a href="{% url 'satou:blog_detail' satou.pk %}">
                         <h2 class="post-title">
-                            {{ blog.title }}
+                            {{ satou.title }}
                         </h2>
                         <h3 class="post-subtitle">
-                            {{ blog.content|truncatechars:20 }}
+                            {{ satou.content|truncatechars:20 }}
                         </h3>
                     </a>
                     <p class="post-meta">{{ blog.created_at }}</p>
