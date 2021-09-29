@@ -1,9 +1,9 @@
-{% extends 'diary/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
-{% block title %}日記一覧 | Private Diary{% endblock %}
+{% block title %}日記一覧 | Private Blog{% endblock %}
 
-{% block active_diary_list %}active{% endblock %}
+{% block active_blog_list %}active{% endblock %}
 
 {% block head %}
 <link href="" rel="stylesheet">
@@ -15,19 +15,19 @@
         <div class="my-div-style w-100">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="clearfix">
-                    <a class="btn btn-primary float-right" href="{% url 'diary:diary_create' %}">新規作成</a>
+                    <a class="btn btn-primary float-right" href="{% url 'hinata:blog_create' %}">新規作成</a>
                 </div>
-                {% for diary in diary_list %}
+                {% for hinata in blog_list %}
                 <div class="post-preview">
-                    <a href="{% url 'diary:diary_detail' diary.pk %}">
+                    <a href="{% url 'hinata:blog_detail' blog.pk %}">
                         <h2 class="post-title">
-                            {{ diary.title }}
+                            {{ blog.title }}
                         </h2>
                         <h3 class="post-subtitle">
-                            {{ diary.content | truncatechars:20 }}
+                            {{ blog.content | truncatechars:20 }}
                         </h3>
                     </a>
-                    <p class="post-meta">{{ diary.created_at }}</p>
+                    <p class="post-meta">{{ blog.created_at }}</p>
                 </div>
                 <hr>
                 {% empty %}

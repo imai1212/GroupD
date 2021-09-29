@@ -9,9 +9,9 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
 
-from .forms import InquiryForm, DiaryCreateForm
+from .forms import InquiryForm, BlogCreateForm
 
-from .models import Diary
+from .models import Blog
 
 
 logger = logging.getLogger(__name__)
@@ -20,12 +20,12 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 class IndexView(generic.TemplateView):
-    template_name="diary/index.html"
+    template_name="hinata/index.html"
     
 class InquiryView(generic.FormView):
-    template_name="diary/Inquiry.html"
+    template_name="hinata/Inquiry.html"
     form_class = InquiryForm
-    success_url = reverse_lazy('diary:inquiry')
+    success_url = reverse_lazy('hinata:inquiry')
 
     def form_valid(self, form):
         form.send_email()
@@ -33,29 +33,29 @@ class InquiryView(generic.FormView):
         logger.info('Inquiry sent by {}'.format(form.cleaned_data['name']))
         return super().form_valid(form)
 
-class DiaryListView(LoginRequiredMixin, generic.ListView):
-    model = Diary
-    template_name = 'diary/diary_list.html'
+class BlogListView(LoginRequiredMixin, generic.ListView):
+    model = Blog
+    template_name = 'hinata/blog_list.html'
     #paginate_by = 2
 
     def get_queryset(self):
-        diaries = Diary.objects.filter(user=self.request.user).order_by('-created_at')
+        diaries = Blog.objects.filter(user=self.request.user).order_by('-created_at')
         return diaries
 
-class DiaryDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Diary
-    template_name = 'diary/diary_detail.html'
+class BlogDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Blog
+    template_name = 'hinata/blog_detail.html'
 
-class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
-    model = Diary
-    template_name = 'diary/diary_create.html'
-    form_class = DiaryCreateForm
-    success_url = reverse_lazy('diary:diary_list')
+class BlogCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Blog
+    template_name = 'hinata/blog_create.html'
+    form_class = BlogCreateForm
+    success_url = reverse_lazy('hinata:blog_list')
 
     def form_valid(self, form):
-        diary = form.save(commit=False)
-        diary.user = self.request.user
-        diary.save()
+        blog = form.save(commit=False)
+        blog.user = self.request.user
+        blog.save()
         messages.success(self.request, '日記を作成しました。')
         return super().form_valid(form)
     def form_invalid(self, form):
@@ -63,13 +63,13 @@ class DiaryCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_invalid(form)
 
 
-class DiaryUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Diary
-    template_name = 'diary/diary_update.html'
-    form_class = DiaryCreateForm
+class BlogUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Blog
+    template_name = 'hinata/blog_update.html'
+    form_class = BlogCreateForm
     
     def get_success_url(self):
-        return reverse_lazy('diary:diary_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy('hinata:blog_detail', kwargs={'pk': self.kwargs['pk']})
 
     def form_valid(self, form):
         messages.success(self.request, '日記を更新しました。')
@@ -79,10 +79,10 @@ class DiaryUpdateView(LoginRequiredMixin, generic.UpdateView):
         return super().form_invalid(form)
 
 
-class DiaryDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Diary
-    template_name = 'diary/diary_delete.html'
-    success_url = reverse_lazy('diary:diary_list')
+class BlogDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Blog
+    template_name = 'hinata/blog_delete.html'
+    success_url = reverse_lazy('hinata:blog_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, "日記を削除しました。")
