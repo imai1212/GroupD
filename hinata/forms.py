@@ -35,7 +35,7 @@ class InquiryForm(forms.Form):
 class BlogCreateForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ('title', 'content', 'photo1', 'photo2', 'photo3',)
+        fields = ('title', 'content',)
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
             for field in self.fields.values():
