@@ -1,6 +1,6 @@
 from .forms import InquiryForm, BlogCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from blog.models import Blog
+from satou.models import Blog
 from django.contrib import messages
 from django.urls import reverse_lazy
 import logging
